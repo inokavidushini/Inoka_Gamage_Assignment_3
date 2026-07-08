@@ -42,4 +42,14 @@ namespace MyBudget.Core;
                 g => g.Sum(e => e.MonthlyImpact));
     }
 
+    public IReadOnlyList<Expense> InCategory(
+        ExpenseCategory category)
+    {
+        return _expenses
+            .Where(e => e.Category == category)
+            .OrderBy(e => e.Date).ToList();
+    }
+
+
+
 }
