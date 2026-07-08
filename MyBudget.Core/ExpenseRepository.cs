@@ -20,6 +20,17 @@ namespace MyBudget.Core;
         return _expenses.OrderBy(e => e.Date).ToList();
 
     }
+    public void Add(Expense expense)
+    {
+        ArgumentNullException.ThrowIfNull(expense);
+
+        _expenses.Add(expense);
+    }
+
+    public decimal Total()
+    {
+        return _expenses.Sum(e => e.MonthlyImpact);
+    }
 
 
 
