@@ -25,6 +25,18 @@ string dataPath = Path.Combine(AppContext.BaseDirectory, "expenses.json");
 //   - ConsoleApp          (the UI, so it can be resolved below)
 // Choose appropriate service lifetimes (singleton / scoped / transient).
 
+//AddSingleton() is a Dependency Injection (DI) method in C# and that tells .net,
+//Create only one instance of this class and reuse it everywhere in the application
+builder.Services.AddSingleton<IExpenseStore>(
+    _ => new JsonExpenseStore("dataPath"));         // JsonExpenseStore as the implementation of IExpenseStore, asks IExpenseStore, give a JsonExpenseStore object  
+
+builder.Services.AddSingleton<IExpenseRepository,
+    ExpenseRepository>();                           //asks for IExpenseRepository, Create Expense repository ExpenseRepository needs IExpenseStore
+
+builder.Services.AddSingleton<IBudgetService,
+    BudgetService>();                               //
+
+
 using IHost host = builder.Build();
 
 host.Services.GetRequiredService<ConsoleApp>().Run();
