@@ -50,6 +50,9 @@ namespace MyBudget.Core;
             .OrderBy(e => e.Date).ToList();
     }
 
-
+    public void Save()
+    {
+        _store.Save(_expenses);
+    }
 
 }
