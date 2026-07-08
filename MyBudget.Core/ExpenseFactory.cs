@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MyBudget.Core
+namespace MyBudget.Core;
 public static class ExpenseFactory
 {
     public static decimal ValidateAmount(decimal amount)
@@ -52,12 +52,17 @@ public static class ExpenseFactory
             throw new InvalidExpenseException(
                 "Invalid frequency");
 
+        description = description.Trim();
 
-
+        amount = ValidateAmount(amount);
+        return new RecurringExpense(
+            Guid.NewGuid(),
+            description,
+            amount,
+            category,
+            date,
+            timesPerMonth);
     }
-
-
-
 }
 
-}
+
