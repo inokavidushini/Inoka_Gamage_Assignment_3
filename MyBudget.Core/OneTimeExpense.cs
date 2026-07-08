@@ -10,9 +10,10 @@ namespace MyBudget.Core;
     decimal Amount,
     ExpenseCategory Category,
     DateOnly Date
-    )
+    ) : Expense(Id, Description, Amount, Category, Date)
 {
-    internal class OneTimeExpense
-    {
-    }
+    
+    
+        public override decimal MonthlyImpact => Amount;
+    
 }
