@@ -32,6 +32,14 @@ namespace MyBudget.Core;
         return _expenses.Sum(e => e.MonthlyImpact);
     }
 
-
+    public IReadOnlyDictionary<ExpenseCategory, decimal>
+        TotalsByCategory()
+    {
+        return _expenses
+            .GroupBy(e => e.Category)
+            .ToDictionary(
+                g => g.Key,
+                g => g.Sum(e => e.MonthlyImpact));
+    }
 
 }
