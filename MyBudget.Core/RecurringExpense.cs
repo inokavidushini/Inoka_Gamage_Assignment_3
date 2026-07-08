@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MyBudget.Core;
 
-    public record RecurringExpense(
+public record RecurringExpense(
     Guid Id,
     string Description,
     decimal Amount,
@@ -12,10 +12,13 @@ namespace MyBudget.Core;
     DateOnly Date,
     int TimesPerMonth
 ) : Expense(Id, Description, Amount, Category, Date)
-
 {
     public override decimal MonthlyImpact =>
-       Amount * TimesPerMonth;
+        Amount * TimesPerMonth;
 
-
+    public override string ToReportLine()
+    {
+        return base.ToReportLine() +
+               $" (x{TimesPerMonth}/month)";
+    }
 }
