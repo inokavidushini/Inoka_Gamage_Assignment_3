@@ -31,12 +31,21 @@ builder.Services.AddSingleton<IExpenseStore>(
     _ => new JsonExpenseStore("dataPath"));         // JsonExpenseStore as the implementation of IExpenseStore, asks IExpenseStore, give a JsonExpenseStore object  
 
 builder.Services.AddSingleton<IExpenseRepository,
-    ExpenseRepository>();                           //asks for IExpenseRepository, Create Expense repository ExpenseRepository needs IExpenseStore
+    ExpenseRepository>();                           //asks for IExpenseRepository, To Create Expense repository ExpenseRepository needs IExpenseStore
 
 builder.Services.AddSingleton<IBudgetService,
-    BudgetService>();                               //
+    BudgetService>();                               //asks IBudgetService,To create Budget service();
+
+builder.Services.AddSingleton<ConsoleApp>();        //Register the ConsoleApp class
 
 
 using IHost host = builder.Build();
 
 host.Services.GetRequiredService<ConsoleApp>().Run();
+
+
+
+//AddSingleton() method registers services with the Dependency Injection container.
+//It creates a single instance of the service and reuses it throughout the application's lifetime
+//Scoped service creates one object per scope
+//Every time the service is requested, a new object is created.
