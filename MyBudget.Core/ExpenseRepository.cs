@@ -15,6 +15,12 @@ namespace MyBudget.Core;
         _expenses = store.Load().ToList();
     }
 
+    public IReadOnlyList<Expense> GetAll()
+    {
+        return _expenses.OrderBy(e => e.Date).ToList();
+
+    }
+
 
 
 }
