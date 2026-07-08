@@ -18,7 +18,10 @@ public abstract record Expense(
 ) : IReportable
 
 {
-    internal class Expense
+    public abstract decimal MonthlyImpact { get; }
+
+    public virtual string ToReportLine()
     {
+        return $"{Date} - {Description} - {Amount:C}";
     }
 }
