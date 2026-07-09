@@ -51,11 +51,14 @@ namespace MyBudget.Tests;
         //Act
         Action action = ()=> ExpenseFactory.CreateOneTime(description, amount, category, default);
 
-
-
+        // Assert
+        var Exception = Assert.Throws<InvalidExpenseException>((action));
+        Assert.Equal(
+            "Expense amount cannot be negative.",
+            Exception.Message);
 
 
     }
 
- }
+}
 
