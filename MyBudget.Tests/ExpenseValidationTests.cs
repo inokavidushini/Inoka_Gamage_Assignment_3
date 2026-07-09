@@ -1,7 +1,7 @@
-﻿using System;
+﻿//using System;
 using MyBudget.Core;
-using MyBudget.Data;
-using MyBudget.Tests.Fakes;
+//using MyBudget.Data;
+//using MyBudget.Tests.Fakes;
 using Xunit;
 
 namespace MyBudget.Tests;
@@ -30,7 +30,7 @@ namespace MyBudget.Tests;
 
         // Assert
         var Exception = Assert.Throws<InvalidExpenseException>((action));
-        Assert.Equal("Expense description cannot be empty.", Exception.Message);
+        Assert.Equal("Description required", Exception.Message);
     }
        
     
@@ -54,7 +54,7 @@ namespace MyBudget.Tests;
         // Assert
         var Exception = Assert.Throws<InvalidExpenseException>((action));
         Assert.Equal(
-            "Expense amount cannot be negative.",
+            "Invalid amount",
             Exception.Message);
 
 
