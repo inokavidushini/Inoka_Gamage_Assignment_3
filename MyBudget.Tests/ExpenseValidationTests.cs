@@ -43,6 +43,16 @@ namespace MyBudget.Tests;
                 -5m,
                 ExpenseCategory.Food,
                 default));*/
+        // Arrange
+        string description = "Coffee";
+        decimal amount = -5m;
+        ExpenseCategory category = ExpenseCategory.Food;
+
+        //Act
+        Action action = ()=> ExpenseFactory.CreateOneTime(description, amount, category, default);
+
+
+
 
 
     }
