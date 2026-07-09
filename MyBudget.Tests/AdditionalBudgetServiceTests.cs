@@ -1,10 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MyBudget.Core;
+using Xunit;
 
-namespace MyBudget.Tests
+
+//check whether the Remaining() method in BudgetService works properly when when no monthly limit has been set
+namespace MyBudget.Tests;
+
+
+public class AdditionalBudgetServiceTests
 {
-    internal class AdditionalBudgetServiceTests
+    [Fact]
+    public void Remaining_WhenNoLimit_ShouldReturnZero()
     {
+        // Arrange
+        var service = new BudgetService();
+
+        // Act
+        var remaining = service.Remaining(100m);
+
+        // Assert
+        Assert.Equal(-100m, remaining);
+
     }
 }
