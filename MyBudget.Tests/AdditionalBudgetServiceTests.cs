@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MyBudget.Core;
+﻿using MyBudget.Core;
 using Xunit;
 
 
@@ -12,7 +9,7 @@ namespace MyBudget.Tests;
 public class AdditionalBudgetServiceTests
 {
     [Fact]
-    public void Remaining_WhenNoLimit_ShouldReturnZero()
+    public void Remaining_WhenNoLimitAndExpensesExist_ShouldReturnNegativeAmount()
     {
         // Arrange
         var service = new BudgetService();
@@ -22,6 +19,7 @@ public class AdditionalBudgetServiceTests
 
         // Assert
         Assert.Equal(-100m, remaining);
+
 
     }
 }
